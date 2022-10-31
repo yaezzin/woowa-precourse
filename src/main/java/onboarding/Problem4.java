@@ -13,4 +13,12 @@ public class Problem4 {
         }
         return false;
     }
+
+    private static boolean isLowerAlphabet(int asciiCode) {
+        if (asciiCode >= 'a' && asciiCode <= 'z') {
+            return true;
+        }
+        return false;
+    }
+
 }

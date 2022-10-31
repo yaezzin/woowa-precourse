@@ -23,6 +23,10 @@ class Problem1 {
             return WrongPageRangeException();
         }
 
+        if (!isPageOrder(crongLeftPage, crongRightPage) || !isPageOrder(pobiLeftPage, pobiRightPage)) {
+            return WrongPageOrderException();
+        }
+
         Integer pobiMaxScore = Integer.max(getMaxScore(pobiLeftPage), getMaxScore(pobiRightPage));
         Integer crongMaxScore = Integer.max(getMaxScore(crongLeftPage), getMaxScore(crongRightPage));
 
@@ -31,6 +35,16 @@ class Problem1 {
 
     private static boolean isPageRange(Integer page) {
         if (page > MAX_PAGE && page < MIN_PAGE) {
+            return false;
+        }
+        return true;
+    }
+
+    private static boolean isPageOrder(Integer leftPage, Integer rightPage) {
+        if (leftPage % 2 == 0) {
+            return false;
+        }
+        else if (rightPage != leftPage + 1) {
             return false;
         }
         return true;

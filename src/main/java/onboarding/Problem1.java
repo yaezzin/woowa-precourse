@@ -8,16 +8,14 @@ class Problem1 {
     static final int MAX_PAGE = 400;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-
-        if (pobi.size() != 2 || crong.size() != 2) {
-            return WrongListSizeException();
-        }
-
         Integer pobiLeftPage = pobi.get(0);
         Integer pobiRightPage = pobi.get(1);
         Integer crongLeftPage = crong.get(0);
         Integer crongRightPage = crong.get(1);
+
+        if (pobi.size() != 2 || crong.size() != 2) {
+            return WrongListSizeException();
+        }
 
         if (!isPageRange(pobiLeftPage) || !isPageRange(pobiRightPage) || !isPageRange(crongLeftPage) || !isPageRange(crongRightPage)) {
             return WrongPageRangeException();
@@ -30,6 +28,7 @@ class Problem1 {
         Integer pobiMaxScore = Integer.max(getMaxScore(pobiLeftPage), getMaxScore(pobiRightPage));
         Integer crongMaxScore = Integer.max(getMaxScore(crongLeftPage), getMaxScore(crongRightPage));
 
+        int answer = getWinner(pobiMaxScore, crongMaxScore);
         return answer;
     }
 
@@ -70,6 +69,20 @@ class Problem1 {
             page /= 10;
         }
         return multiple;
+    }
+
+    private static int getWinner(Integer firstMaxScore, Integer SecondMaxScore) {
+        int answer = Integer.MAX_VALUE;
+        if (firstMaxScore.equals(SecondMaxScore)) {
+            answer = 0;
+        }
+        if (firstMaxScore > SecondMaxScore) {
+            answer = 1;
+        }
+        if (firstMaxScore < SecondMaxScore) {
+            answer = 2;
+        }
+        return answer;
     }
 
     private static Integer WrongListSizeException() {

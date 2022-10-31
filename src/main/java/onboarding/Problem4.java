@@ -7,6 +7,9 @@ public class Problem4 {
 
     public static String solution(String word) {
         String answer = "";
+        for (char c : word.toCharArray()) {
+            answer += convertOppositeWord(c);
+        }
         return answer;
     }
 
@@ -21,7 +24,6 @@ public class Problem4 {
         }
         return c;
     }
-
 
     private static boolean isUpperAlphabet(int asciiCode) {
         if (asciiCode >= 'A' && asciiCode <= 'Z') {

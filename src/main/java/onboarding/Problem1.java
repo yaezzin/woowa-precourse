@@ -23,6 +23,9 @@ class Problem1 {
             return WrongPageRangeException();
         }
 
+        Integer pobiMaxScore = Integer.max(getMaxScore(pobiLeftPage), getMaxScore(pobiRightPage));
+        Integer crongMaxScore = Integer.max(getMaxScore(crongLeftPage), getMaxScore(crongRightPage));
+
         return answer;
     }
 
@@ -31,6 +34,28 @@ class Problem1 {
             return false;
         }
         return true;
+    }
+
+    private static Integer getMaxScore(Integer page) {
+        return Integer.max(sumDigit(page), multiplyDigit(page));
+    }
+
+    private static Integer sumDigit(Integer page) {
+        int sum = 0;
+        while(page > 0) {
+            sum += page % 10;
+            page /= 10;
+        }
+        return sum;
+    }
+
+    private static Integer multiplyDigit(Integer page) {
+        int multiple = 1;
+        while (page > 0) {
+            multiple *= page % 10;
+            page /= 10;
+        }
+        return multiple;
     }
 
     private static Integer WrongListSizeException() {

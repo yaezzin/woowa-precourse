@@ -80,4 +80,8 @@ class Problem1 {
         return -1;
     }
 
+    private static Integer WrongPageOrderException() {
+        return -1;
+    }
+
 }

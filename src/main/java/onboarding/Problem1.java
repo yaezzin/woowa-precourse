@@ -17,11 +17,11 @@ class Problem1 {
             return WrongListSizeException();
         }
 
-        if (!isPageRange(pobiLeftPage) || !isPageRange(pobiRightPage) || !isPageRange(crongLeftPage) || !isPageRange(crongRightPage)) {
+        if (!isValidPageRange(pobiLeftPage) || !isValidPageRange(pobiRightPage) || !isValidPageRange(crongLeftPage) || !isValidPageRange(crongRightPage)) {
             return WrongPageRangeException();
         }
 
-        if (!isPageOrder(crongLeftPage, crongRightPage) || !isPageOrder(pobiLeftPage, pobiRightPage)) {
+        if (!isValidPageOrder(crongLeftPage, crongRightPage) || !isValidPageOrder(pobiLeftPage, pobiRightPage)) {
             return WrongPageOrderException();
         }
 
@@ -32,14 +32,14 @@ class Problem1 {
         return answer;
     }
 
-    private static boolean isPageRange(Integer page) {
+    private static boolean isValidPageRange(Integer page) {
         if (page > MAX_PAGE && page < MIN_PAGE) {
             return false;
         }
         return true;
     }
 
-    private static boolean isPageOrder(Integer leftPage, Integer rightPage) {
+    private static boolean isValidPageOrder(Integer leftPage, Integer rightPage) {
         if (leftPage % 2 == 0) {
             return false;
         }

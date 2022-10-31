@@ -4,7 +4,7 @@ public class Problem3 {
     public static int solution(int number) {
         int answer = 0;
 
-        if (!isNumberRange(number)) {
+        if (!isValidNumberRange(number)) {
             return -1;
         }
 
@@ -25,7 +25,7 @@ public class Problem3 {
         return count;
     }
 
-    private static boolean isNumberRange(int number) {
+    private static boolean isValidNumberRange(int number) {
         if (number < 1 || number > 10000) {
             return false;
         }

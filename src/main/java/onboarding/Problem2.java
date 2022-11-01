@@ -2,6 +2,10 @@ package onboarding;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
+        if (!isValidRange(cryptogram) || !isLowerCase(cryptogram)) {
+            return "Error";
+        }
+
         while (true) {
             String decodeString = decodeString(cryptogram);
             if (cryptogram.equals(decodeString)) {
@@ -10,6 +14,19 @@ public class Problem2 {
             cryptogram = decodeString;
         }
         return cryptogram;
+    }
+
+    private static boolean isValidRange(String cryptogram) {
+        return cryptogram.length() <= 1000;
+    }
+
+    private static boolean isLowerCase(String cryptogram) {
+        for (int i = 0; i < cryptogram.length(); i++) {
+            if (!Character.isLowerCase(cryptogram.charAt(i))) {
+                return false;
+            }
+        }
+        return true;
     }
 
     private static String decodeString(String cryptogram) {

@@ -8,8 +8,8 @@ public class Problem6 {
     private static Set<String> duplicate = new HashSet<>(); // 중복을 저장하는 리스트
 
     public static List<String> solution(List<List<String>> forms) {
-        List<String> strings = pairNicknameByTwo(forms);
-        return isDuplicated(forms, strings);
+        List<String> pairedString = pairNicknameByTwo(forms);
+        return isDuplicated(forms, pairedString);
     }
 
     private static List<String> pairNicknameByTwo(List<List<String>> forms) {
@@ -22,17 +22,17 @@ public class Problem6 {
         return pairedWords;
     }
 
-    private static List<String> isDuplicated(List<List<String>> forms, List<String> words) {
+    private static List<String> isDuplicated(List<List<String>> forms, List<String> pairedWords) {
+
         for (int i = 0; i < forms.size(); i++) {
-            String procEmail = forms.get(i).get(0);
-
-            for (int j = i + 1; j < forms.size(); j++) { // 2번째부터 비교해서 나감
-                String email = forms.get(j).get(0);
-
-                for (String word : words) {
-                    if (email.contains(word)) {
-                        duplicate.add(procEmail);
-                        duplicate.add(email);
+            String preEmail = forms.get(i).get(0);
+            for (int j = i + 1; j < forms.size(); j++) {
+                String nextEmail = forms.get(j).get(0);
+                String nextNickname = forms.get(j).get(1);
+                for (String word : pairedWords) {
+                    if (nextNickname.contains(word)) {
+                        duplicate.add(preEmail);
+                        duplicate.add(nextEmail);
                         break;
                     }
                     break;
@@ -44,5 +44,4 @@ public class Problem6 {
         Collections.sort(answer);
         return answer;
     }
-
 }

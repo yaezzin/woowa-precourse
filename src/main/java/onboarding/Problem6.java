@@ -15,7 +15,7 @@ public class Problem6 {
         for (int i = 0; i < forms.size(); i++) {
             String email = forms.get(i).get(0);
             String nickname = forms.get(i).get(1);
-            if (!isValidNicknameRange(nickname)) {
+            if (!isValidNicknameRange(nickname) || !isValidEmailRange(email)) {
                 return Collections.emptyList();
             }
         }
@@ -30,6 +30,10 @@ public class Problem6 {
 
     private static boolean isValidNicknameRange(String nickname) {
         return nickname.length() >= 1 && nickname.length() < 20;
+    }
+
+    private static boolean isValidEmailRange(String email) {
+        return email.length() >= 11 && email.length() < 20;
     }
 
     private static List<String> pairNicknameByTwo(List<List<String>> forms) {

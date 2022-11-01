@@ -10,6 +10,7 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         getFriends(friends);
         getFriendsScore(user, friends);
+        getVisitedScore(visitors);
         return null;
     }
 
@@ -54,6 +55,17 @@ public class Problem7 {
             }
         }
         return friendList;
+    }
+
+    private static void getVisitedScore(List<String> visitors) {
+        for (String visitor : visitors) {
+            if (!score.containsKey(visitor)) {
+                score.put(visitor, 1);
+                continue;
+            }
+            Integer visitedScore = score.get(visitor);
+            score.put(visitor, visitedScore + 1);
+        }
     }
 
 }

@@ -1,9 +1,11 @@
 package onboarding;
 
 public class Problem2 {
+    private static final String ERROR_MESSAGE = "Error";
+
     public static String solution(String cryptogram) {
         if (!isValidRange(cryptogram) || !isLowerCase(cryptogram)) {
-            return "Error";
+            return ERROR_MESSAGE;
         }
 
         while (true) {

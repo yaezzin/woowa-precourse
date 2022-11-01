@@ -9,6 +9,7 @@ public class Problem7 {
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         getFriends(friends);
+        getFriendsScore(user, friends);
         return null;
     }
 
@@ -40,5 +41,19 @@ public class Problem7 {
         List<String> nextFriendList = relations.get(nextFriend);
         nextFriendList.add(preFriend);
     };
+
+    private static List<String> getFriendsScore(String user, List<List<String>> friends) {
+        List<String> friendList = relations.get(user);
+        for (String list : friendList) {
+            List<String> knownFriends = relations.get(list);
+            for (String friend : knownFriends) {
+                if (friends.contains(friend)) continue;
+                if (friend.equals(user)) continue;
+                Integer friendScore = score.get(friend);
+                score.put(friend, friendScore + 10);
+            }
+        }
+        return friendList;
+    }
 
 }

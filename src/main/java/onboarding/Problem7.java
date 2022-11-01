@@ -8,12 +8,20 @@ public class Problem7 {
     private static Map<String, Integer> score = new HashMap<>();
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+        if (!isValidUserNameRange(user)) {
+            return Collections.emptyList();
+        }
+
         getFriends(friends);
         List<String> friendScore = getFriendsScore(user, friends);
         getVisitedScore(visitors);
         Map<String, Integer> totalScore = getTotalScore(score);
         List<String> answer = getResult(totalScore, friendScore);
         return answer;
+    }
+
+    private static boolean isValidUserNameRange(String username) {
+        return username.length() >= 1 && username.length() <= 30;
     }
 
     private static void getFriends(List<List<String>> friends) {

@@ -8,9 +8,18 @@ public class Problem6 {
     private static Set<String> duplicate = new HashSet<>(); // 중복을 저장하는 리스트
 
     public static List<String> solution(List<List<String>> forms) {
+        if (!isValidCrewSize(forms.size())) {
+            return Collections.emptyList();
+        }
+
         List<String> pairedString = pairNicknameByTwo(forms);
         return isDuplicated(forms, pairedString);
     }
+
+    private static boolean isValidCrewSize(int size) {
+        return size >= 1 && size <= 10000;
+    }
+
 
     private static List<String> pairNicknameByTwo(List<List<String>> forms) {
         for (int i = 0; i < forms.size(); i++) {
@@ -23,7 +32,6 @@ public class Problem6 {
     }
 
     private static List<String> isDuplicated(List<List<String>> forms, List<String> pairedWords) {
-
         for (int i = 0; i < forms.size(); i++) {
             String preEmail = forms.get(i).get(0);
             for (int j = i + 1; j < forms.size(); j++) {

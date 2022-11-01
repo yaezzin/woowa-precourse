@@ -8,10 +8,9 @@ public class Problem7 {
     private static Map<String, Integer> score = new HashMap<>();
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        if (!isValidUserNameRange(user) || !isValidFriendsRange(friends) || !isValidVisitorsRange(visitors)) {
+        if (!isValidUserNameRange(user) || !isValidUserNameFormat(user) || !isValidFriendsRange(friends) || !isValidVisitorsRange(visitors)) {
             return Collections.emptyList();
         }
-
         getFriends(friends);
         List<String> friendScore = getFriendsScore(user, friends);
         getVisitedScore(visitors);
@@ -22,6 +21,16 @@ public class Problem7 {
 
     private static boolean isValidUserNameRange(String username) {
         return username.length() >= 1 && username.length() <= 30;
+    }
+
+    private static boolean isValidUserNameFormat(String username) {
+        char[] alphabets = username.toCharArray();
+        for (char alphabet : alphabets) {
+            if (!(alphabet >= 'a' && alphabet <= 'z')) {
+                return false;
+            }
+        }
+        return true;
     }
 
     private static boolean isValidFriendsRange(List<List<String>> friends) {

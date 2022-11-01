@@ -12,6 +12,14 @@ public class Problem6 {
             return Collections.emptyList();
         }
 
+        for (int i = 0; i < forms.size(); i++) {
+            String email = forms.get(i).get(0);
+            String nickname = forms.get(i).get(1);
+            if (!isValidNicknameRange(nickname)) {
+                return Collections.emptyList();
+            }
+        }
+
         List<String> pairedString = pairNicknameByTwo(forms);
         return isDuplicated(forms, pairedString);
     }
@@ -20,6 +28,9 @@ public class Problem6 {
         return size >= 1 && size <= 10000;
     }
 
+    private static boolean isValidNicknameRange(String nickname) {
+        return nickname.length() >= 1 && nickname.length() < 20;
+    }
 
     private static List<String> pairNicknameByTwo(List<List<String>> forms) {
         for (int i = 0; i < forms.size(); i++) {

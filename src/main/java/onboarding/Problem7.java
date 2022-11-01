@@ -9,9 +9,11 @@ public class Problem7 {
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         getFriends(friends);
-        getFriendsScore(user, friends);
+        List<String> friendScore = getFriendsScore(user, friends);
         getVisitedScore(visitors);
-        return null;
+        Map<String, Integer> totalScore = getTotalScore(score);
+        List<String> answer = getResult(totalScore, friendScore);
+        return answer;
     }
 
     private static void getFriends(List<List<String>> friends) {
@@ -66,6 +68,26 @@ public class Problem7 {
             Integer visitedScore = score.get(visitor);
             score.put(visitor, visitedScore + 1);
         }
+    }
+
+    private static Map<String, Integer> getTotalScore(Map<String, Integer> score) {
+        Object[] mapKey = score.keySet().toArray();
+        Arrays.sort(mapKey);
+        return score;
+    }
+
+    private static List<String> getResult(Map<String, Integer> totalScore, List<String> withFriends) {
+        List<String> result = new ArrayList<>();
+        int count = 0;
+
+        for(Map.Entry<String, Integer> entry: totalScore.entrySet()){
+            if (count == 5) break;
+            if (entry.getValue() == 0) continue;
+            if (withFriends.contains(entry.getKey())) continue;
+            result.add(entry.getKey());
+            count++;
+        }
+        return result;
     }
 
 }

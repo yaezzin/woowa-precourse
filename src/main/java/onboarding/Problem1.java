@@ -33,20 +33,11 @@ class Problem1 {
     }
 
     private static boolean isValidPageRange(Integer page) {
-        if (page > MAX_PAGE && page < MIN_PAGE) {
-            return false;
-        }
-        return true;
+        return page < MAX_PAGE && page > MIN_PAGE;
     }
 
     private static boolean isValidPageOrder(Integer leftPage, Integer rightPage) {
-        if (leftPage % 2 == 0) {
-            return false;
-        }
-        else if (rightPage != leftPage + 1) {
-            return false;
-        }
-        return true;
+        return leftPage % 2 != 0 && rightPage == leftPage + 1 ;
     }
 
     private static Integer getMaxScore(Integer page) {

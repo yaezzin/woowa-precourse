@@ -25,16 +25,10 @@ public class Application {
         }
     }
 
-    private static List<Integer> getUserNumber() {
+    private static void getUserNumber() {
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
-
-        List<Integer> result = new ArrayList<>();
-        for (char ch : input.toCharArray()) {
-            int digit = ch - '0';
-            result.add(digit);
-        }
-        return result;
+        List<Integer> userNumber = Utils.convertStringToInteger(input);
     }
 
     public static void main(String[] args) {

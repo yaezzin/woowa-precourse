@@ -29,6 +29,20 @@ public class Application {
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
         List<Integer> userNumber = Utils.convertStringToInteger(input);
+
+        if (!isValidNumber(userNumber)) {
+            throw new IllegalArgumentException();
+        } else {
+            guessTargetNumber(userNumber);
+        }
+    }
+
+    private static boolean isValidNumber(List<Integer> inputNumber) {
+        if (inputNumber.size() != 3 || inputNumber.contains(0)) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
     public static void main(String[] args) {

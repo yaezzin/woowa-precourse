@@ -11,13 +11,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class ComputerTest {
 
     @Test
-    public void randomNumberSize() {
+    public void 랜덤넘버의_사이즈() {
         Computer computer = new Computer();
         assertEquals(computer.generateRandomNumber().size(), 3);
     }
 
     @Test
-    public void three_strike() {
+    public void 쓰리_스트라이크() {
         // given
         Computer computer = new Computer();
         List<Integer> targetNumber = new ArrayList<>(Arrays.asList(1, 2, 3));
@@ -31,7 +31,7 @@ public class ComputerTest {
     }
 
     @Test
-    public void nothing() {
+    public void 낫싱() {
         // given
         Computer computer = new Computer();
         List<Integer> targetNumber = new ArrayList<>(Arrays.asList(2, 4, 7));

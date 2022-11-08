@@ -32,7 +32,18 @@ public class Game {
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
         List<Integer> userNumber = Utils.convertStringToInteger(input);
+        if (!isValidNumber(userNumber)) {
+            throw new IllegalArgumentException();
+        }
         return userNumber;
+    }
+
+    private static boolean isValidNumber(List<Integer> input) {
+        if (input.size() != 3 || input.contains(0)) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
     private static boolean isContinue() {

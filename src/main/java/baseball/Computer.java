@@ -60,4 +60,8 @@ public class Computer {
             System.out.println(ball + "볼 " + strike + "스트라이크");
         }
     }
+
+    public void setTargetNumber(List<Integer> target) {
+        this.computer = target;
+    }
 }

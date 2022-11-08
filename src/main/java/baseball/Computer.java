@@ -31,4 +31,22 @@ public class Computer {
         return computer;
     }
 
+    public static int guessTargetNumber(List<Integer> guessNumber) {
+        strike = 0;
+        ball = 0;
+
+        for (int i = 0; i < guessNumber.size(); i++) {
+            int guessDigit = guessNumber.get(i);
+            int targetDigit = computer.get(i);
+
+            if (targetDigit == guessDigit) {
+                strike++;
+            }
+            if (targetDigit != guessDigit && computer.contains(guessDigit)) {
+                ball++;
+            }
+        }
+        return strike;
+    }
+
 }

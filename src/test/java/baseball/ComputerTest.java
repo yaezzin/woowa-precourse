@@ -22,4 +22,18 @@ public class ComputerTest {
         // then
         assertEquals(3, computer.guessTargetNumber(guessNumber));
     }
+
+    @Test
+    public void nothing() {
+        // given
+        Computer computer = new Computer();
+        List<Integer> targetNumber = new ArrayList<>(Arrays.asList(2, 4, 7));
+        List<Integer> guessNumber = new ArrayList<>(Arrays.asList(1, 3, 6));
+
+        // when
+        computer.setTargetNumber(targetNumber);
+
+        // then
+        assertEquals(0, computer.guessTargetNumber(guessNumber));
+    }
 }

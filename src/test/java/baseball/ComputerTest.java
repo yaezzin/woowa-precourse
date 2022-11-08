@@ -9,6 +9,13 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ComputerTest {
+
+    @Test
+    public void randomNumberSize() {
+        Computer computer = new Computer();
+        assertEquals(computer.generateRandomNumber().size(), 3);
+    }
+
     @Test
     public void three_strike() {
         // given

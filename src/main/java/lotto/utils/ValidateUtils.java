@@ -20,17 +20,24 @@ public class ValidateUtils {
 
     public static void checkSeparator(int size) {
         if (size == 1) {
-            System.out.println("당첨 번호는 구분자(',')를 이용하여 입력합니다.");
+            System.out.println("로또 번호는 구분자(',')를 이용하여 입력합니다.");
             throw new IllegalArgumentException("[ERROR] 당첨 번호는 구분자(',')를 이용하여 입력합니다.");
         }
     }
 
     public static void checkInputSize(int size) {
         if (size != 6) {
-            System.out.println("당첨 번호는 6개만 입력합니다.");
+            System.out.println("로또 번호는 6개만 입력합니다.");
             throw new IllegalArgumentException("[ERROR] 당첨 번호는 6개만 입력합니다.");
         }
     }
 
+    public static void checkNumberRange(int number) {
+        if (number < 1 || number > 45) {
+            System.out.println("로또 번호는 1 ~ 45 범위의 값만 입력합니다.");
+            throw new IllegalArgumentException("[ERROR] 로또 번호는 1 ~ 45 범위의 값만 입력합니다.");
+
+        }
+    }
 
 }

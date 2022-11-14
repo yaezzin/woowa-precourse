@@ -1,5 +1,7 @@
 package lotto.utils;
 
+import java.util.List;
+
 public class ValidateUtils {
 
     public static void checkNumberType(String money) {
@@ -36,8 +38,13 @@ public class ValidateUtils {
         if (number < 1 || number > 45) {
             System.out.println("로또 번호는 1 ~ 45 범위의 값만 입력합니다.");
             throw new IllegalArgumentException("[ERROR] 로또 번호는 1 ~ 45 범위의 값만 입력합니다.");
-
         }
     }
 
+    public static void checkDuplicatedRange(List<Integer> numberList, int number) {
+        if (numberList.contains(number)) {
+            System.out.println("중복된 로또 번호는 입력할 수 없습니다");
+            throw new IllegalArgumentException("[ERROR] 중복된 당첨 번호는 입력할 수 없습니다.");
+        }
+    }
 }

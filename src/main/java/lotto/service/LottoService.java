@@ -9,9 +9,7 @@ public class LottoService {
         System.out.println("구입금액을 입력해 주세요");
         String money = Console.readLine().trim();
         ValidateUtil.checkNumberType(money);
+        ValidateUtil.checkUnit(Integer.parseInt(money));
         return Integer.parseInt(money);
     }
-
-
-
 }

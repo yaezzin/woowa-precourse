@@ -2,6 +2,7 @@ package lotto.service;
 
 import camp.nextstep.edu.missionutils.Console;
 import lotto.utils.ValidateUtils;
+import org.junit.jupiter.params.shadow.com.univocity.parsers.annotations.Validate;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +30,7 @@ public class LottoService {
         String[] inputs = inputList.split(",");
 
         ValidateUtils.checkSeparator(inputs.length);
-        ValidateUtils.checkInputSize(inputs.length);
+        ValidateUtils.checkInputSize(inputs.length, 6);
 
         List<Integer> answer = new ArrayList<>();
         for (String input : inputs) {
@@ -40,4 +41,11 @@ public class LottoService {
         return answer;
     }
 
+    public static int inputBonusLottoNumber() {
+        String bonus = Console.readLine().trim();
+        ValidateUtils.checkNumberType(bonus);
+        ValidateUtils.checkInputSize(bonus.length(), 1);
+        ValidateUtils.checkNumberRange(Integer.parseInt(bonus));
+        return Integer.parseInt(bonus);
+    }
 }

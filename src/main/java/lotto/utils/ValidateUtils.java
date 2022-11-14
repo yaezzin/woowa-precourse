@@ -27,8 +27,8 @@ public class ValidateUtils {
         }
     }
 
-    public static void checkInputSize(int size) {
-        if (size != 6) {
+    public static void checkInputSize(int inputSize, int maxSize) {
+        if (inputSize != maxSize) {
             System.out.println("로또 번호는 6개만 입력합니다.");
             throw new IllegalArgumentException("[ERROR] 당첨 번호는 6개만 입력합니다.");
         }

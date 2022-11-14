@@ -28,8 +28,8 @@ public class LottoService {
         String inputList = Console.readLine().trim();
         String[] inputs = inputList.split(",");
 
-        ValidateUtils.checkSaparator(input.length);
-        ValidateUtils.checkInputSize(input.length);
+        ValidateUtils.checkSeparator(inputs.length);
+        ValidateUtils.checkInputSize(inputs.length);
 
         List<Integer> answer = new ArrayList<>();
         for (String input : inputs) {

@@ -18,5 +18,12 @@ public class ValidateUtils {
         }
     }
 
+    public static void checkSeparator(int size) {
+        if (size == 1) {
+            System.out.println("당첨 번호는 구분자(',')를 이용하여 입력합니다.");
+            throw new IllegalArgumentException("[ERROR] 당첨 번호는 구분자(',')를 이용하여 입력합니다.");
+        }
+    }
+
 
 }

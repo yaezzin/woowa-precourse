@@ -1,6 +1,6 @@
 package lotto.utils;
 
-public class ValidateUtil {
+public class ValidateUtils {
 
     public static void checkNumberType(String money) {
         for (int i = 0; i < money.length(); i++) {

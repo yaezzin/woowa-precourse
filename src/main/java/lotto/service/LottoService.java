@@ -2,7 +2,6 @@ package lotto.service;
 
 import camp.nextstep.edu.missionutils.Console;
 import lotto.utils.ValidateUtils;
-import org.junit.jupiter.params.shadow.com.univocity.parsers.annotations.Validate;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,9 +9,14 @@ import java.util.List;
 public class LottoService {
 
     public void startLottoGame() {
-        // 사용자의 입력을 받음
+        // 1. 사용자의 구매금액을 입력 받음
         inputUserPay();
 
+        // 2. 사용자의 숫자를 입력받음
+        inputLottoNumbers();
+
+        // 3. 보너스 번호를 입력받음
+        inputBonusLottoNumber();
     }
 
     private static int inputUserPay() {
@@ -23,6 +27,13 @@ public class LottoService {
         ValidateUtils.checkUnit(Integer.parseInt(money));
 
         return Integer.parseInt(money);
+    }
+
+    public static int getLottoCount(int money) {
+        int change = 0;
+        change = money / 1000;
+        System.out.println(change + "개 를 구매했습니다.");
+        return change;
     }
 
     private static List<Integer> inputLottoNumbers() {

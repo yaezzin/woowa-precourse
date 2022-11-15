@@ -36,7 +36,9 @@ public class Lotto {
     public static List<Lotto> makeLottoNumbers(int change) {
         List<Lotto> lottoNumberList= new ArrayList<>();
         for (int i = 1; i <= change; i++) {
-            lottoNumberList.add(new Lotto(makeRandomLottoNumbers()));
+            Lotto lotto = new Lotto(makeRandomLottoNumbers());
+            lottoNumberList.add(lotto);
+            System.out.println(lotto.getNumbers());
         }
         return lottoNumberList;
     }

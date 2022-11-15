@@ -29,7 +29,11 @@ public class GameScore {
 
     private static double calculateProfitRate(int price, int userPay) {
         double result = (double) price / (double) userPay * 100;
-        System.out.println("총 수익률은 " + String.format("%.1d",result) + "%입니다.\n");
+        printProfileRage(result);
         return result;
+    }
+
+    private static void printProfileRage(double result) {
+        System.out.printf("총 수익율은 " + String.format("%.1f", result)+ "입니다.");
     }
 }

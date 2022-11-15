@@ -44,6 +44,18 @@ public class LottoService {
         return numbers;
     }
 
+    private static List<List<Integer>> buyLotto(int change) {
+        List<List<Integer>> lottoNumberList= new ArrayList<>();
+        List<Integer> lotto;
+
+        for (int i = 1; i <= change; i++) {
+            lotto = makeRandomLottoNumbers();
+            lottoNumberList.add(lotto);
+            System.out.println(lotto);
+        }
+        return lottoNumberList;
+    }
+
     private static List<Integer> inputLottoNumbers() {
         String inputList = Console.readLine().trim();
         String[] inputs = inputList.split(",");

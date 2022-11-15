@@ -2,47 +2,29 @@ package lotto.service;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import lotto.domain.GameScore;
-import lotto.domain.GameView;
-import lotto.domain.LottoWinType;
+import lotto.domain.*;
 import lotto.utils.ValidateUtils;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
-import static lotto.domain.GameScore.getGameScore;
-import static lotto.domain.Lotto.checkSameNumber;
 import static lotto.domain.Lotto.makeLottoNumbers;
 
 
 public class LottoService {
 
-    public void startLottoGame() {
-        // 1. 사용자의 구매금액을 입력 받음
+    public GameScore startLottoGame() {
+        User user = getUserLottoListByPay();
+        Lotto userLottoNumbers = inputLottoNumbers();
+        int bonusNumber = inputBonusLottoNumber();
+        return user.getGameScore(userLottoNumbers, bonusNumber);
+    }
+
+    private User getUserLottoListByPay() {
         int userPay = inputUserPay();
-
-        // 2. 로또 개수를 출력
         int lottoCount = getLottoCount(userPay);
-
-        // 3. 랜덤 숫자를 뽑음
-        List<List<Integer>> randomLottoNumber = makeLottoNumbers(lottoCount);
-        
-        // 5. 로또 번호를 입력받음
-        List<Integer> userLottoNumber = inputLottoNumbers();
-
-        // 6. 보너스 번호를 입력받음
-        int bonus = inputBonusLottoNumber();
-
-        // 7. 게임 스코어 출력하기
-
-        for (List<Integer> randomNumber : randomLottoNumber) {
-            LottoWinType lottoWinType = checkSameNumber(userLottoNumber, randomNumber, bonus);
-            int totalPrize = 0;
-            totalPrize += lottoWinType.getMoney();
-            GameScore gameScore = getGameScore(totalPrize, userPay, lottoWinType);
-            GameView.printWinLottoStats(gameScore);
-        }
+        List<Lotto> lotto = makeLottoNumbers(lottoCount);
+        return User.of(userPay, lotto);
     }
 
     private static int inputUserPay() {
@@ -62,12 +44,13 @@ public class LottoService {
         return change;
     }
 
-    private static List<Integer> inputLottoNumbers() {
+    private static Lotto inputLottoNumbers() {
+        System.out.println("당첨 번호를 입력해 주세요.");
         String inputList = Console.readLine().trim();
         String[] inputs = inputList.split(",");
 
         ValidateUtils.checkSeparator(inputs.length);
-        ValidateUtils.checkInputSize(inputs.length, 6);
+       // ValidateUtils.checkInputSize(inputs.length, 6);
 
         List<Integer> answer = new ArrayList<>();
         for (String input : inputs) {
@@ -75,10 +58,11 @@ public class LottoService {
             ValidateUtils.checkNumberRange(lottoNumber);
             ValidateUtils.checkDuplicatedRange(answer, lottoNumber);
         }
-        return answer;
+        return Lotto.of(answer);
     }
 
     private static int inputBonusLottoNumber() {
+        System.out.println("보너스 번호를 입력해 주세요.");
         String bonus = Console.readLine().trim();
         ValidateUtils.checkNumberType(bonus);
         ValidateUtils.checkInputSize(bonus.length(), 1);

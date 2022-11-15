@@ -7,6 +7,7 @@ import org.junit.jupiter.params.shadow.com.univocity.parsers.annotations.Validat
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static lotto.domain.LottoWinType.matchGameScoreAndLottoWinType;
 
@@ -18,35 +19,32 @@ public class Lotto {
         this.numbers = numbers;
     }
 
+    public static Lotto of(List<Integer> numbers) {
+        return new Lotto(numbers);
+    }
+
     private void validate(List<Integer> numbers) {
         ValidateUtils.checkNumberRange(numbers);
-        ValidateUtils.checkInputSize(numbers.size(), 6);
+        //ValidateUtils.checkInputSize(numbers.size(), 6);
         ValidateUtils.checkDuplicatedRange(numbers);
     }
 
-    public static List<List<Integer>> makeLottoNumbers(int change) {
-        List<List<Integer>> lottoNumberList= new ArrayList<>();
-        List<Integer> lotto;
+    public List<Integer> getNumbers() {
+        return numbers.stream().sorted().collect(Collectors.toList());
+    }
 
+    public static List<Lotto> makeLottoNumbers(int change) {
+        List<Lotto> lottoNumberList= new ArrayList<>();
         for (int i = 1; i <= change; i++) {
-            lotto = makeRandomLottoNumbers();
-            lottoNumberList.add(lotto);
-            System.out.println(lotto);
+            lottoNumberList.add(new Lotto(makeRandomLottoNumbers()));
         }
         return lottoNumberList;
     }
 
-    private static List<Integer> makeRandomLottoNumbers() {
-        List<Integer> numbers = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
-        numbers.sort(Comparator.naturalOrder());
-        return numbers;
-    }
-
-    public static LottoWinType checkSameNumber(List<Integer> lotto, List<Integer> winLotto, int bonusLotto) {
+    public LottoWinType checkMatchedLotto(List<Integer> winLotto, int bonusLotto) {
         int answerCount = 0;
         int bonusCount = 0;
-
-        for (Integer number : lotto) {
+        for (Integer number : this.getNumbers()) {
             if (winLotto.contains(number)) {
                 answerCount++;
             }
@@ -55,5 +53,11 @@ public class Lotto {
             }
         }
         return matchGameScoreAndLottoWinType(answerCount, bonusCount);
+    }
+
+    private static List<Integer> makeRandomLottoNumbers() {
+        List<Integer> numbers = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
+        numbers.sort(Comparator.naturalOrder());
+        return numbers;
     }
 }

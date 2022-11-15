@@ -47,5 +47,4 @@ public enum LottoWinType {
         }
         return LottoWinType.ELSE;
     }
-
 }

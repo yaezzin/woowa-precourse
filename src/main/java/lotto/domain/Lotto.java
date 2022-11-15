@@ -2,7 +2,6 @@ package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import lotto.utils.ValidateUtils;
-import org.junit.jupiter.params.shadow.com.univocity.parsers.annotations.Validate;
 
 import java.util.ArrayList;
 import java.util.Comparator;

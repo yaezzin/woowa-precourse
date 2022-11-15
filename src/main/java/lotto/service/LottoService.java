@@ -16,6 +16,7 @@ public class LottoService {
     public GameScore startLottoGame() {
         User user = getUserLottoListByPay();
         Lotto userLottoNumbers = inputLottoNumbers();
+        System.out.println("userLottoNumbers : " + userLottoNumbers.getNumbers());
         int bonusNumber = inputBonusLottoNumber();
         return user.getGameScore(userLottoNumbers, bonusNumber);
     }
@@ -57,6 +58,7 @@ public class LottoService {
             int lottoNumber = Integer.parseInt(input);
             ValidateUtils.checkNumberRange(lottoNumber);
             ValidateUtils.checkDuplicatedRange(answer, lottoNumber);
+            answer.add(lottoNumber);
         }
         return Lotto.of(answer);
     }

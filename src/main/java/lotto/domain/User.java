@@ -30,8 +30,8 @@ public class User {
 
     public GameScore getGameScore(Lotto lottoNumbers, int bonusNumber) {
         int totalPrizeMoney = 0;
+        initLottoWinTypeMap();
         for (Lotto lotto : this.numbers) {
-            initLottoWinTypeMap();
             LottoWinType winType = lotto.checkMatchedLotto(lottoNumbers.getNumbers(), bonusNumber);
             totalPrizeMoney += winType.getMoney();
             this.lottoWinTypeMap.put(winType, this.lottoWinTypeMap.get(winType) + 1);
@@ -47,5 +47,4 @@ public class User {
         this.lottoWinTypeMap.put(LottoWinType.FIFTH, 0);
         this.lottoWinTypeMap.put(LottoWinType.ELSE, 0);
     }
-
 }

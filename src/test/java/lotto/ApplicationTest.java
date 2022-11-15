@@ -59,6 +59,14 @@ class ApplicationTest extends NsTest {
         });
     }
 
+    @Test
+    void 입력단위_테스트() {
+        assertSimpleTest(() -> {
+            runException("999");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});

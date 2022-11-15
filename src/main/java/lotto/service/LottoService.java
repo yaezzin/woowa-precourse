@@ -1,12 +1,9 @@
 package lotto.service;
 
-import camp.nextstep.edu.missionutils.Console;
-
 import lotto.domain.*;
-import lotto.utils.ValidateUtils;
+import lotto.view.GameInput;
 import lotto.view.GameMessage;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static lotto.domain.GameView.printProfitRange;
@@ -34,10 +31,8 @@ public class LottoService {
 
     private static int inputUserPay() {
         GameMessage.printInputMoney();
-        String money = Console.readLine().trim();
-        ValidateUtils.checkNumberType(money);
-        ValidateUtils.checkUnit(Integer.parseInt(money));
-        return Integer.parseInt(money);
+        int money = GameInput.inputUserPay();
+        return money;
     }
 
     private static int getLottoCount(int money) {
@@ -49,28 +44,13 @@ public class LottoService {
 
     private static Lotto inputLottoNumbers() {
         GameMessage.printInputLottoNumbers();
-        String inputList = Console.readLine().trim();
-        String[] inputs = inputList.split(",");
-
-        ValidateUtils.checkSeparator(inputs.length);
-        ValidateUtils.checkInputSize(inputs.length, 6);
-
-        List<Integer> answer = new ArrayList<>();
-        for (String input : inputs) {
-            int lottoNumber = Integer.parseInt(input);
-            ValidateUtils.checkNumberRange(lottoNumber);
-            ValidateUtils.checkDuplicatedRange(answer, lottoNumber);
-            answer.add(lottoNumber);
-        }
+        List<Integer> answer = GameInput.inputLottoNumbers();
         return Lotto.of(answer);
     }
 
     private static int inputBonusLottoNumber() {
         GameMessage.printInputBonusLottoNumber();
-        String bonus = Console.readLine().trim();
-        ValidateUtils.checkNumberType(bonus);
-        ValidateUtils.checkInputSize(bonus.length(), 1);
-        ValidateUtils.checkNumberRange(Integer.parseInt(bonus));
-        return Integer.parseInt(bonus);
+        int bonusNumber = GameInput.inputBonusLottoNumber();
+        return bonusNumber;
     }
 }

@@ -20,12 +20,6 @@ public class LottoService {
         // 2. 로또 개수를 출력
         int lottoCount = getLottoCount(userPay);
 
-        // 3. 랜덤한 숫자를 뽑음
-        makeRandomLottoNumbers();
-
-        // 4. 로또를 구매함
-        buyLotto(lottoCount);
-
         // 5. 사용자의 숫자를 입력받음
         inputLottoNumbers();
 
@@ -52,25 +46,6 @@ public class LottoService {
         return change;
     }
 
-
-    private static List<List<Integer>> buyLotto(int change) {
-        List<List<Integer>> lottoNumberList= new ArrayList<>();
-        List<Integer> lotto;
-
-        for (int i = 1; i <= change; i++) {
-            lotto = makeRandomLottoNumbers();
-            lottoNumberList.add(lotto);
-            System.out.println(lotto);
-        }
-        return lottoNumberList;
-    }
-
-    private static List<Integer> makeRandomLottoNumbers() {
-        List<Integer> numbers = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
-        numbers.sort(Comparator.naturalOrder());
-        return numbers;
-    }
-
     private static List<Integer> inputLottoNumbers() {
         String inputList = Console.readLine().trim();
         String[] inputs = inputList.split(",");
@@ -94,20 +69,4 @@ public class LottoService {
         ValidateUtils.checkNumberRange(Integer.parseInt(bonus));
         return Integer.parseInt(bonus);
     }
-
-    private static LottoWinType checkSameNumber(List<Integer> lotto, List<Integer> winLotto, int bonusLotto) {
-        int answerCount = 0;
-        int bonusCount = 0;
-
-        for (Integer number : lotto) {
-            if (winLotto.contains(number)) {
-                answerCount++;
-            }
-            if (number == bonusLotto) {
-                bonusCount++;
-            }
-        }
-        return matchGameScoreAndLottoWinType(answerCount, bonusCount);
-    }
-
 }

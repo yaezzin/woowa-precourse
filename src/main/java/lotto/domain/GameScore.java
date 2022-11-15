@@ -4,12 +4,12 @@ import java.util.Map;
 
 public class GameScore {
 
-    private int prizeMoney;
+    private int winMoney;
     private double profitRate;
     private static Map<LottoWinType, Integer> lottoWinTypeMap;
 
-    public GameScore(int prizeMoney, double profitRate, Map<LottoWinType, Integer> lottoWinTypeMap) {
-        this.prizeMoney = prizeMoney;
+    public GameScore(int winMoney, double profitRate, Map<LottoWinType, Integer> lottoWinTypeMap) {
+        this.winMoney = winMoney;
         this.profitRate = profitRate;
         this.lottoWinTypeMap = lottoWinTypeMap;
     }
@@ -22,9 +22,9 @@ public class GameScore {
         return lottoWinTypeMap;
     }
 
-    public static GameScore of(int prizeMoney, int userPay, Map<LottoWinType, Integer> lottoWinType) {
-        double profitRate = calculateProfitRate(prizeMoney, userPay);
-        return new GameScore(prizeMoney, profitRate, lottoWinType);
+    public static GameScore of(int winMoney, int userPay, Map<LottoWinType, Integer> lottoWinType) {
+        double profitRate = calculateProfitRate(winMoney, userPay);
+        return new GameScore(winMoney, profitRate, lottoWinType);
     }
 
     private static double calculateProfitRate(int price, int userPay) {

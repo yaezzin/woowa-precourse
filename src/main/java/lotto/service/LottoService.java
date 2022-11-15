@@ -52,7 +52,7 @@ public class LottoService {
         String[] inputs = inputList.split(",");
 
         ValidateUtils.checkSeparator(inputs.length);
-       // ValidateUtils.checkInputSize(inputs.length, 6);
+        ValidateUtils.checkInputSize(inputs.length, 6);
 
         List<Integer> answer = new ArrayList<>();
         for (String input : inputs) {

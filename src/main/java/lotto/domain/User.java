@@ -21,14 +21,14 @@ public class User {
     }
 
     public GameScore getGameScore(Lotto lottoNumbers, int bonusNumber) {
-        int totalPrizeMoney = 0;
+        int totalWinMoney = 0;
         initLottoWinTypeMap();
         for (Lotto lotto : this.numbers) {
             LottoWinType winType = lotto.checkMatchedLotto(lottoNumbers.getNumbers(), bonusNumber);
-            totalPrizeMoney += winType.getMoney();
+            totalWinMoney += winType.getMoney();
             this.lottoWinTypeMap.put(winType, this.lottoWinTypeMap.get(winType) + 1);
         }
-        return GameScore.of(totalPrizeMoney, this.money, this.lottoWinTypeMap);
+        return GameScore.of(totalWinMoney, this.money, this.lottoWinTypeMap);
     }
 
     private void initLottoWinTypeMap() {

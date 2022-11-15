@@ -23,16 +23,11 @@ public class LottoService {
     }
 
     private User getUserLottoListByPay() {
-        int userPay = inputUserPay();
+        GameMessage.printInputMoney();
+        int userPay = GameInput.inputUserPay();
         int lottoCount = getLottoCount(userPay);
         List<Lotto> lotto = makeLottoNumbers(lottoCount);
         return User.of(userPay, lotto);
-    }
-
-    private static int inputUserPay() {
-        GameMessage.printInputMoney();
-        int money = GameInput.inputUserPay();
-        return money;
     }
 
     private static int getLottoCount(int money) {

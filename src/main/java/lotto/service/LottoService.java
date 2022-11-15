@@ -1,9 +1,11 @@
 package lotto.service;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 import lotto.utils.ValidateUtils;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class LottoService {
@@ -34,6 +36,12 @@ public class LottoService {
         change = money / 1000;
         System.out.println(change + "개 를 구매했습니다.");
         return change;
+    }
+
+    public static List<Integer> makeRandomLottoNumbers() {
+        List<Integer> numbers = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
+        numbers.sort(Comparator.naturalOrder());
+        return numbers;
     }
 
     private static List<Integer> inputLottoNumbers() {

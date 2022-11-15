@@ -24,7 +24,7 @@ public class Lotto {
         ValidateUtils.checkDuplicatedRange(numbers);
     }
 
-    private static List<List<Integer>> makeLottoNumbers(int change) {
+    public static List<List<Integer>> makeLottoNumbers(int change) {
         List<List<Integer>> lottoNumberList= new ArrayList<>();
         List<Integer> lotto;
 
@@ -42,7 +42,7 @@ public class Lotto {
         return numbers;
     }
 
-    private static LottoWinType checkSameNumber(List<Integer> lotto, List<Integer> winLotto, int bonusLotto) {
+    public static LottoWinType checkSameNumber(List<Integer> lotto, List<Integer> winLotto, int bonusLotto) {
         int answerCount = 0;
         int bonusCount = 0;
 

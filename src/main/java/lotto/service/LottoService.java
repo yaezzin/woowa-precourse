@@ -1,15 +1,20 @@
 package lotto.service;
 
 import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
+
+import lotto.domain.GameScore;
+import lotto.domain.GameView;
 import lotto.domain.LottoWinType;
 import lotto.utils.ValidateUtils;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 
-import static lotto.domain.LottoWinType.matchGameScoreAndLottoWinType;
+import static lotto.domain.GameScore.getGameScore;
+import static lotto.domain.Lotto.checkSameNumber;
+import static lotto.domain.Lotto.makeLottoNumbers;
+
 
 public class LottoService {
 
@@ -20,13 +25,24 @@ public class LottoService {
         // 2. 로또 개수를 출력
         int lottoCount = getLottoCount(userPay);
 
-        // 5. 사용자의 숫자를 입력받음
-        inputLottoNumbers();
+        // 3. 랜덤 숫자를 뽑음
+        List<List<Integer>> randomLottoNumber = makeLottoNumbers(lottoCount);
+        
+        // 5. 로또 번호를 입력받음
+        List<Integer> userLottoNumber = inputLottoNumbers();
 
         // 6. 보너스 번호를 입력받음
-        inputBonusLottoNumber();
+        int bonus = inputBonusLottoNumber();
 
+        // 7. 게임 스코어 출력하기
 
+        for (List<Integer> randomNumber : randomLottoNumber) {
+            LottoWinType lottoWinType = checkSameNumber(userLottoNumber, randomNumber, bonus);
+            int totalPrize = 0;
+            totalPrize += lottoWinType.getMoney();
+            GameScore gameScore = getGameScore(totalPrize, userPay, lottoWinType);
+            GameView.printWinLottoStats(gameScore);
+        }
     }
 
     private static int inputUserPay() {

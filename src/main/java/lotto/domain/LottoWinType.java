@@ -21,6 +21,14 @@ public enum LottoWinType {
         this.index = index;
     }
 
+    public int getMoney() {
+        return money;
+    }
+
+    public int getIndex() {
+        return index;
+    }
+
     public static LottoWinType matchGameScoreAndLottoWinType(int answer, int bonus) {
         if (answer == 6) {
             return LottoWinType.FIRST;

@@ -20,14 +20,6 @@ public class User {
         return new User(money, lottos);
     }
 
-    public int getMoney() {
-        return money;
-    }
-
-    public List<Lotto> getNumbers() {
-        return numbers;
-    }
-
     public GameScore getGameScore(Lotto lottoNumbers, int bonusNumber) {
         int totalPrizeMoney = 0;
         initLottoWinTypeMap();

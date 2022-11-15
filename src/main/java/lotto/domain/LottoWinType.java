@@ -29,14 +29,6 @@ public enum LottoWinType {
         return index;
     }
 
-    public int getCorrectAnswer() {
-        return correctAnswer;
-    }
-
-    public int getCorrectBonus() {
-        return correctBonus;
-    }
-
     public static LottoWinType matchGameScoreAndLottoWinType(int answer, int bonus) {
         if (answer == 6) {
             return LottoWinType.FIRST;

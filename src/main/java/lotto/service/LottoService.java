@@ -42,7 +42,7 @@ public class LottoService {
     private static int getLottoCount(int money) {
         int change = 0;
         change = money / 1000;
-        System.out.println(change + "개 를 구매했습니다.");
+        System.out.println(change + "개를 구매했습니다.");
         return change;
     }
 

@@ -7,7 +7,7 @@ import java.util.List;
 public class GameView {
 
     public static void printProfitRange(double result) {
-        System.out.println("총 수익율은 " + String.format("%.1f", result)+ "입니다.");
+        System.out.println("총 수익률은 " + String.format("%.1f", result)+ "%입니다.");
     }
 
     public static void printWinLottoStats(GameScore gameScore) {

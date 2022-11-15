@@ -8,17 +8,20 @@ import lotto.utils.ValidateUtils;
 import java.util.ArrayList;
 import java.util.List;
 
+import static lotto.domain.GameView.printProfitRange;
+import static lotto.domain.GameView.printWinLottoStats;
 import static lotto.domain.Lotto.makeLottoNumbers;
 
 
 public class LottoService {
 
-    public GameScore startLottoGame() {
+    public void startLottoGame() {
         User user = getUserLottoListByPay();
         Lotto userLottoNumbers = inputLottoNumbers();
-        System.out.println("userLottoNumbers : " + userLottoNumbers.getNumbers());
         int bonusNumber = inputBonusLottoNumber();
-        return user.getGameScore(userLottoNumbers, bonusNumber);
+        GameScore score = user.getGameScore(userLottoNumbers, bonusNumber);
+        printProfitRange(score.getProfitRate());
+        printWinLottoStats(score);
     }
 
     private User getUserLottoListByPay() {
@@ -31,10 +34,8 @@ public class LottoService {
     private static int inputUserPay() {
         System.out.println("구입금액을 입력해 주세요");
         String money = Console.readLine().trim();
-
         ValidateUtils.checkNumberType(money);
         ValidateUtils.checkUnit(Integer.parseInt(money));
-
         return Integer.parseInt(money);
     }
 

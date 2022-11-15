@@ -6,6 +6,10 @@ import java.util.List;
 
 public class GameView {
 
+    public static void printProfitRange(double result) {
+        System.out.println("총 수익율은 " + String.format("%.1f", result)+ "입니다.");
+    }
+
     public static void printWinLottoStats(GameScore gameScore) {
         System.out.println("당첨 통계\n---");
         List<LottoWinType> mapKeySet = new ArrayList<>(gameScore.getLottoWinType().keySet());
@@ -17,7 +21,6 @@ public class GameView {
             }
             System.out.println(getWinTypePrintText(winType) + gameScore.getLottoWinType().get(winType) + "개");
         }
-        System.out.println(String.format("총 수익률은 %.1f%%입니다.", gameScore.getProfitRate()));
     }
 
     private static String getWinTypePrintText(LottoWinType winType) {

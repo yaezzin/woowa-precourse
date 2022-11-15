@@ -37,9 +37,13 @@ public class Lotto {
         for (int i = 1; i <= change; i++) {
             Lotto lotto = new Lotto(makeRandomLottoNumbers());
             lottoNumberList.add(lotto);
-            System.out.println(lotto.getNumbers());
+            printLottoNumbers(lotto);
         }
         return lottoNumberList;
+    }
+
+    private static void printLottoNumbers(Lotto lotto) {
+        System.out.println(lotto.getNumbers());
     }
 
     public LottoWinType checkMatchedLotto(List<Integer> winLotto, int bonusLotto) {

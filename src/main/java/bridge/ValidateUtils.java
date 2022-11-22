@@ -1,6 +1,6 @@
 package bridge;
 
-import static bridge.ErrorMessage.*;
+import static bridge.view.message.ErrorMessage.*;
 
 public class ValidateUtils {
 

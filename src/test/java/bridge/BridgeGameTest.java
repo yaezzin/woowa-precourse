@@ -16,6 +16,13 @@ public class BridgeGameTest {
         Assertions.assertThat(bridgeGame.move("D")).isEqualTo(false);
     }
 
+    @Test
+    void 올발른_칸_이동_테스트() {
+        List<String> bridge = new ArrayList<>(List.of("U","U","D"));
+        BridgeGame bridgeGame = new BridgeGame(bridge);
+        Assertions.assertThat(bridgeGame.move("U")).isEqualTo(true);
+    }
+
 
 
 }

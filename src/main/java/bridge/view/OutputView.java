@@ -82,5 +82,6 @@ public class OutputView {
     }
 
     public void printInputRetry() {
+        System.out.println(INPUT_RETRY_GAME_MESSAGE);
     }
 }

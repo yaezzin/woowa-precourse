@@ -33,8 +33,10 @@ public class BridgeGameService {
 
     public void gameStart(List<String> bridge) {
         BridgeGame bridgeGame = new BridgeGame(bridge);
-        while(!bridgeGame.isGameOver()) {
+        while(true) {
             play(bridgeGame);
+            if (isQuit(inputView, outputView, bridgeGame)) break;
+            if (bridgeGame.getSuccess()) break;
         }
         outputView.printResult(bridgeGame);
     }
@@ -45,8 +47,6 @@ public class BridgeGameService {
         List<String> upBoardList = bridgeGame.getUpBoardList();
         List<String> downBoardList = bridgeGame.getDownBoardList();
         outputView.printMap(upBoardList, downBoardList);
-        if (isQuit(inputView, outputView, bridgeGame)) break;
-        if (bridgeGame.getSuccess()) break;
     }
 
     private String getBoard(InputView inputView, OutputView outputView) {

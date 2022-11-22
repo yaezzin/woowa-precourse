@@ -1,5 +1,6 @@
 package bridge.view;
 
+import static bridge.view.message.PrintMessage.INPUT_BRIDGE_SIZE_MESSAGE;
 import static bridge.view.message.PrintMessage.START_MESSAGE;
 
 /**
@@ -10,6 +11,11 @@ public class OutputView {
     public static void printStartMessage() {
         System.out.println(START_MESSAGE);
     }
+
+    public static void printInputBridgeSize() {
+        System.out.println(INPUT_BRIDGE_SIZE_MESSAGE);
+    }
+
 
     /**
      * 현재까지 이동한 다리의 상태를 정해진 형식에 맞춰 출력한다.

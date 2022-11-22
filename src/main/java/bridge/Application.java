@@ -1,5 +1,6 @@
 package bridge;
 
+import bridge.controller.BridgeGameController;
 import bridge.view.InputView;
 import bridge.view.OutputView;
 import camp.nextstep.edu.missionutils.Console;
@@ -9,19 +10,11 @@ import java.util.List;
 public class Application {
 
     public static void main(String[] args) {
-        Bridge bridge = new Bridge();
-        getBridge(bridge.getBridgeMaker());
+        try {
+            BridgeGameController bridgeGameController = new BridgeGameController();
+            bridgeGameController.play();
+        } catch (IllegalArgumentException exception) {
+            System.out.println(exception.getMessage());
+        }
     }
-
-    private static List<String> getBridge(BridgeMaker bridgeMaker) {
-        OutputView.printStartMessage();
-        int size = getInputBridgeSize();
-        return bridgeMaker.makeBridge(size);
-    }
-
-    //private static int getInputBridgeSize() {
-    //    OutputView.printInputBridgeSize();
-    //    return InputView.readBridgeSize();
-    //}
-
 }

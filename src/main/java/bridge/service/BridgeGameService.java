@@ -32,15 +32,13 @@ public class BridgeGameService {
 
     public void gameStart(List<String> randomBridge) {
         BridgeGame bridgeGame = new BridgeGame(randomBridge);
-
         while (true) {
             String board = getBoard(inputView, outputView);
             bridgeGame.move(board);
             List<String> upBoardCheckList = bridgeGame.getUpBoardList();
             List<String> downBoardCheckList = bridgeGame.getDownBoardList();
             outputView.printMap(upBoardCheckList, downBoardCheckList);
-            if (isQuit(inputView, outputView, bridgeGame)) break;
-            if (bridgeGame.getSuccess()) break;
+            if (isQuit(inputView, outputView, bridgeGame) || bridgeGame.getSuccess()) break;
         }
         outputView.printResult(bridgeGame);
     }

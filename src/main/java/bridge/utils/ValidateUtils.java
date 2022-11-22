@@ -10,9 +10,9 @@ public class ValidateUtils {
         }
     }
 
-    public static void validateNumberType(String number) {
+    public static int validateNumberType(String number) {
         try {
-            Integer.parseInt(number);
+            return Integer.parseInt(number);
         } catch (NumberFormatException exception) {
             throw new IllegalArgumentException(VALIDATE_INTEGER_TYPE_ERROR);
         }

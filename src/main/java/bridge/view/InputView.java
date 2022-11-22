@@ -1,6 +1,7 @@
 package bridge.view;
 
 import static bridge.utils.ValidateUtils.*;
+import static bridge.view.message.ErrorMessage.INPUT_NUMBER_RANGE_ERROR;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 /**
@@ -13,8 +14,8 @@ public class InputView {
      */
     public int readBridgeSize() {
         String bridgeSize = readLine();
-        validateNumberRange(Integer.parseInt(bridgeSize));
         validateNumberType(bridgeSize);
+        validateNumberRange(Integer.parseInt(bridgeSize));
         return Integer.parseInt(bridgeSize);
     }
 

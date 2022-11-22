@@ -1,6 +1,5 @@
 package bridge.service;
 
-import bridge.BridgeGame;
 import bridge.BridgeMaker;
 import bridge.BridgeRandomNumberGenerator;
 import bridge.view.InputView;
@@ -40,7 +39,18 @@ public class BridgeGameService {
     }
 
     public void play(BridgeGame bridgeGame) {
-        String move = getInputBridgeMove();
+        String board = getBoard(inputView, outputView);
+        bridgeGame.move(board);
+
+        List<String> upBoardList = bridgeGame.getUpBoardList();
+        List<String> downBoardList = bridgeGame.getDownBoardList();
+
+        outputView.printMap(upBoardList, downBoardList);
+    }
+
+    private String getBoard(InputView inputView, OutputView outputView) {
+        outputView.printInputBoard();
+        return inputView.readMoving();
     }
 
 }

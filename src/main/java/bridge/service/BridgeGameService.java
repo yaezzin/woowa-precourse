@@ -31,22 +31,19 @@ public class BridgeGameService {
         return inputView.readBridgeSize();
     }
 
-    public void gameStart(List<String> bridge) {
-        BridgeGame bridgeGame = new BridgeGame(bridge);
-        while(true) {
-            play(bridgeGame);
+    public void gameStart(List<String> randomBridge) {
+        BridgeGame bridgeGame = new BridgeGame(randomBridge);
+
+        while (true) {
+            String board = getBoard(inputView, outputView);
+            bridgeGame.move(board);
+            List<String> upBoardCheckList = bridgeGame.getUpBoardList();
+            List<String> downBoardCheckList = bridgeGame.getDownBoardList();
+            outputView.printMap(upBoardCheckList, downBoardCheckList);
             if (isQuit(inputView, outputView, bridgeGame)) break;
             if (bridgeGame.getSuccess()) break;
         }
         outputView.printResult(bridgeGame);
-    }
-
-    public void play(BridgeGame bridgeGame) {
-        String board = getBoard(inputView, outputView);
-        bridgeGame.move(board);
-        List<String> upBoardList = bridgeGame.getUpBoardList();
-        List<String> downBoardList = bridgeGame.getDownBoardList();
-        outputView.printMap(upBoardList, downBoardList);
     }
 
     private String getBoard(InputView inputView, OutputView outputView) {
@@ -65,5 +62,4 @@ public class BridgeGameService {
         }
         return false;
     }
-
 }

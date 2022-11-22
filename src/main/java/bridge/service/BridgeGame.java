@@ -1,5 +1,8 @@
 package bridge.service;
 
+import bridge.view.InputView;
+import bridge.view.OutputView;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -17,7 +20,6 @@ public class BridgeGame {
     private int tryCount = 1;
     private boolean success = false;
     private boolean moveSuccess = true;
-    private boolean gameOver;
 
     public BridgeGame(List<String> bridge) {
         this.bridge = bridge;
@@ -38,7 +40,7 @@ public class BridgeGame {
         }
         stage += 1;
         ValidateBrideSizeSameAsBoardList();
-        return success;
+        return moveSuccess;
     }
 
     /**
@@ -52,35 +54,31 @@ public class BridgeGame {
         this.downBoardList.clear();
         this.stage = 0;
         this.tryCount += 1;
-        this.success = true;
-    }
-
-    public boolean isGameOver() {
-        return gameOver;
+        this.moveSuccess = true;
     }
 
     private void addUpList(String move) {
         if (bridge.get(stage).equals(move)) {
             upBoardList.add("O");
             downBoardList.add(" ");
-            success = true;
+            moveSuccess = true;
             return;
         }
         upBoardList.add("X");
         downBoardList.add(" ");
-        success = false;
+        moveSuccess = false;
     }
 
     private void addDownList(String move) {
         if (bridge.get(stage).equals(move)) {
             downBoardList.add("O");
             upBoardList.add(" ");
-            success = true;
+            moveSuccess = true;
             return;
         }
         downBoardList.add("X");
         upBoardList.add(" ");
-        success = false;
+        moveSuccess = false;
     }
 
     private void ValidateBrideSizeSameAsBoardList() {

@@ -16,6 +16,7 @@ public class BridgeGame {
     private int stage = 0;
     private int tryCount = 1;
     private boolean success = false;
+    private boolean moveSuccess = true;
     private boolean gameOver;
 
     public BridgeGame(List<String> bridge) {
@@ -104,5 +105,9 @@ public class BridgeGame {
 
     public int getTryCount() {
         return tryCount;
+    }
+
+    public boolean getMoveSuccess() {
+        return moveSuccess;
     }
 }

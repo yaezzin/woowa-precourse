@@ -80,4 +80,7 @@ public class OutputView {
         if (success) System.out.println("성공");
         if (!success) System.out.println("실패");
     }
+
+    public void printInputRetry() {
+    }
 }

@@ -5,6 +5,7 @@ import bridge.BridgeRandomNumberGenerator;
 import bridge.view.InputView;
 import bridge.view.OutputView;
 
+import java.io.Console;
 import java.util.List;
 
 public class BridgeGameService {
@@ -41,16 +42,28 @@ public class BridgeGameService {
     public void play(BridgeGame bridgeGame) {
         String board = getBoard(inputView, outputView);
         bridgeGame.move(board);
-
         List<String> upBoardList = bridgeGame.getUpBoardList();
         List<String> downBoardList = bridgeGame.getDownBoardList();
-
         outputView.printMap(upBoardList, downBoardList);
+        if (isQuit(inputView, outputView, bridgeGame)) break;
+        if (bridgeGame.getSuccess()) break;
     }
 
     private String getBoard(InputView inputView, OutputView outputView) {
         outputView.printInputBoard();
         return inputView.readMoving();
+    }
+
+    private static boolean isQuit(InputView inputView, OutputView outputView, BridgeGame bridgeGame) {
+        if (!bridgeGame.getMoveSuccess()) {
+            outputView.printInputRetry();
+            String retry = inputView.readGameCommand();
+            if (retry.equals("R")) {
+                bridgeGame.retry();
+            }
+            return retry.equals("Q");
+        }
+        return false;
     }
 
 }

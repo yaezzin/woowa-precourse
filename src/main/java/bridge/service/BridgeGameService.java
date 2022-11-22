@@ -35,7 +35,7 @@ public class BridgeGameService {
         while(!bridgeGame.isGameOver()) {
             play(bridgeGame);
         }
-        outputView.printResult();
+        outputView.printResult(bridgeGame);
     }
 
     public void play(BridgeGame bridgeGame) {

@@ -1,5 +1,7 @@
 package bridge.view;
 
+import bridge.service.BridgeGame;
+
 import java.util.List;
 
 import static bridge.view.message.PrintMessage.*;
@@ -49,7 +51,17 @@ public class OutputView {
      * <p>
      * 출력을 위해 필요한 메서드의 인자(parameter)는 자유롭게 추가하거나 변경할 수 있다.
      */
-    public void printResult() {
+    public void printResult(BridgeGame bridgeGame) {
+        boolean success = bridgeGame.getSuccess();
+        int tryCount = bridgeGame.getTryCount();
+        List<String> upBoardCheckList = bridgeGame.getUpBoardList();
+        List<String> downBoardCheckList = bridgeGame.getDownBoardList();
+        System.out.println(GAME_RESULT_MESSAGE);
+        printMap(upBoardCheckList, downBoardCheckList);
+        System.out.print(GAME_SUCCESS_OR_NOT_MESSAGE);
+        printSuccess(success);
+        System.out.print(GAME_TRY_NUMBER_MESSAGE);
+        System.out.println(tryCount);
     }
 
     public static void printStartMessage() {
@@ -62,5 +74,10 @@ public class OutputView {
 
     public void printInputBoard() {
         System.out.println(INPUT_BOARD_MESSAGE);
+    }
+
+    private void printSuccess(boolean success) {
+        if (success) System.out.println("성공");
+        if (!success) System.out.println("실패");
     }
 }

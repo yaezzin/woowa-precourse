@@ -14,8 +14,8 @@ public class BridgeGame {
     private final List<String> upBoardList = new ArrayList<>();
     private final List<String> downBoardList = new ArrayList<>();
     private int stage = 0;
-    private boolean success = false;
     private int tryCount = 1;
+    private boolean success = false;
     private boolean gameOver;
 
     public BridgeGame(List<String> bridge) {
@@ -96,5 +96,13 @@ public class BridgeGame {
 
     public List<String> getDownBoardList() {
         return downBoardList;
+    }
+
+    public boolean getSuccess() {
+        return success;
+    }
+
+    public int getTryCount() {
+        return tryCount;
     }
 }

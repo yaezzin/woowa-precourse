@@ -1,4 +1,4 @@
-package bridge;
+package bridge.utils;
 
 import static bridge.view.message.ErrorMessage.*;
 

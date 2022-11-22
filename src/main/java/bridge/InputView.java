@@ -1,5 +1,6 @@
 package bridge;
 
+import static bridge.ValidateUtils.validateNumberRange;
 import static java.lang.Integer.parseInt;
 
 /**
@@ -12,6 +13,7 @@ public class InputView {
      */
     public int readBridgeSize(String brideSize) {
         int size = parseInt(brideSize);
+        validateNumberRange(size);
         return 0;
     }
 

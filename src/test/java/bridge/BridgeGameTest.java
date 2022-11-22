@@ -23,6 +23,16 @@ public class BridgeGameTest {
         Assertions.assertThat(bridgeGame.move("U")).isEqualTo(true);
     }
 
+    @Test
+    void 올바른_칸_이동_후_성공() {
+        List<String> bridge = new ArrayList<>(List.of("U","U","D"));
+        BridgeGame bridgeGame = new BridgeGame(bridge);
+        bridgeGame.move("U");
+        bridgeGame.move("U");
+        bridgeGame.move("D");
+        Assertions.assertThat(bridgeGame.getSuccess()).isEqualTo(true);
+    }
+
 
 
 }

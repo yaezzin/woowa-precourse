@@ -34,6 +34,6 @@ public class BridgeMaker {
         if (randomNumber == 1) {
             return "U";
         }
-        throw new IllegalArgumentException();
+        throw new IllegalArgumentException(CONVERT_BRIDGE_NUMBER_ERROR);
     }
 }

@@ -56,10 +56,26 @@ public class OutputView {
         int tryCount = bridgeGame.getTryCount();
         List<String> upBoardCheckList = bridgeGame.getUpBoardList();
         List<String> downBoardCheckList = bridgeGame.getDownBoardList();
+        printResultMessage(success, tryCount, upBoardCheckList, downBoardCheckList);
+    }
+
+    private void printResultMessage(boolean success, int tryCount, List<String> upBoardCheckList, List<String> downBoardCheckList) {
+        printGameResult(upBoardCheckList, downBoardCheckList);
+        printGameSuccess(success);
+        printGameTry(tryCount);
+    }
+
+    private void printGameResult(List<String> upBoardCheckList, List<String> downBoardCheckList) {
         System.out.println(GAME_RESULT_MESSAGE);
         printMap(upBoardCheckList, downBoardCheckList);
+    }
+
+    private void printGameSuccess(boolean success) {
         System.out.print(GAME_SUCCESS_OR_NOT_MESSAGE);
         printSuccess(success);
+    }
+
+    private void printGameTry(int tryCount) {
         System.out.print(GAME_TRY_NUMBER_MESSAGE);
         System.out.println(tryCount);
     }

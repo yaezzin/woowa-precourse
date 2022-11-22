@@ -25,6 +25,7 @@ public class BridgeMaker {
         for (int i = 0; i < size; i++) {
             int randomNumber = bridgeNumberGenerator.generate();
             String board = convertRandomNumberToBoard(randomNumber);
+            bridge.add(board);
         }
         return bridge;
     }

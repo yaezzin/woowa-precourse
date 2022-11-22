@@ -1,6 +1,8 @@
 package bridge;
 
 import static bridge.ValidateUtils.validateNumberRange;
+import static bridge.ValidateUtils.validateNumberType;
+import static camp.nextstep.edu.missionutils.Console.readLine;
 import static java.lang.Integer.parseInt;
 
 /**
@@ -11,10 +13,11 @@ public class InputView {
     /**
      * 다리의 길이를 입력받는다.
      */
-    public int readBridgeSize(String brideSize) {
-        int size = parseInt(brideSize);
-        validateNumberRange(size);
-        return 0;
+    public int readBridgeSize() {
+        String bridgeSize = readLine();
+        validateNumberRange(Integer.parseInt(bridgeSize));
+        validateNumberType(bridgeSize);
+        return Integer.parseInt(bridgeSize);
     }
 
     /**

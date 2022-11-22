@@ -1,6 +1,5 @@
 package bridge;
 
-import bridge.utils.BridgeNumberGenerator;
 import bridge.view.message.ErrorMessage;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.DisplayName;

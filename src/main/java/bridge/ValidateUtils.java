@@ -23,4 +23,10 @@ public class ValidateUtils {
             throw new IllegalArgumentException(INPUT_MOVE_TYPE_ERROR);
         }
     }
+
+    public static void validateGameRetry(String retry) {
+        if (!retry.equals("R") && !retry.equals("Q")) {
+            throw new IllegalArgumentException(INPUT_RETRY_ERROR);
+        }
+    }
 }

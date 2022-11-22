@@ -2,7 +2,6 @@ package bridge;
 
 import static bridge.ValidateUtils.*;
 import static camp.nextstep.edu.missionutils.Console.readLine;
-import static java.lang.Integer.parseInt;
 
 /**
  * 사용자로부터 입력을 받는 역할을 한다.
@@ -33,6 +32,7 @@ public class InputView {
      */
     public String readGameCommand() {
         String command = readLine();
+        validateGameRetry(command);
         return command;
     }
 }

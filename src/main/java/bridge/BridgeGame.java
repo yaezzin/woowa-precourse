@@ -9,13 +9,18 @@ import java.util.List;
  */
 public class BridgeGame {
 
-    private final List<String> bridge = new ArrayList<>();
+    private List<String> bridge;
     private final List<String> boardList = new ArrayList<>();
     private final List<String> upBoardList = new ArrayList<>();
     private final List<String> downBoardList = new ArrayList<>();
     private int count = 0;
     private boolean success = false;
     private int tryCount = 1;
+    private boolean gameOver;
+
+    public BridgeGame(List<String> bridge) {
+        this.bridge = bridge;
+    }
 
     /**
      * 사용자가 칸을 이동할 때 사용하는 메서드
@@ -80,5 +85,9 @@ public class BridgeGame {
         this.count = 0;
         this.tryCount += 1;
         this.success = true;
+    }
+
+    public boolean isGameOver() {
+        return gameOver;
     }
 }

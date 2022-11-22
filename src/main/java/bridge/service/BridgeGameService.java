@@ -20,20 +20,17 @@ public class BridgeGameService {
         this.bridgeMaker = new BridgeMaker(new BridgeRandomNumberGenerator());
     }
 
-    // 1.
     public List<String> getBridge() {
-        OutputView.printStartMessage();
         int size = getInputBridgeSize();
         return bridgeMaker.makeBridge(size);
     }
 
-    private static int getInputBridgeSize() {
-        OutputView.printInputBridgeSize();
-        return InputView.readBridgeSize();
+    private int getInputBridgeSize() {
+        outputView.printStartMessage();
+        outputView.printInputBridgeSize();
+        return inputView.readBridgeSize();
     }
 
-
-    // 2.
     public void gameStart(List<String> bridge) {
         BridgeGame bridgeGame = new BridgeGame(bridge);
         while(!bridgeGame.isGameOver()) {
@@ -41,4 +38,9 @@ public class BridgeGameService {
         }
         outputView.printResult();
     }
+
+    public void play(BridgeGame bridgeGame) {
+        String move = getInputBridgeMove();
+    }
+
 }

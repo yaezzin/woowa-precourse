@@ -1,11 +1,6 @@
 package bridge;
 
 import bridge.controller.BridgeGameController;
-import bridge.view.InputView;
-import bridge.view.OutputView;
-import camp.nextstep.edu.missionutils.Console;
-
-import java.util.List;
 
 public class Application {
 
